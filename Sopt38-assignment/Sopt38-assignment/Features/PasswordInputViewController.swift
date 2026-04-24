@@ -27,7 +27,7 @@ final class PasswordInputViewController: UIViewController {
     
     private let emailLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .watchaGray200
+        label.textColor = .watchaGrayCustom
         label.font = .body1
         return label
     }()

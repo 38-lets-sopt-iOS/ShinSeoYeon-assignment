@@ -15,7 +15,7 @@ final class LoginViewController: UIViewController {
     private let subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "결제 등 중요 정보 알림, 로그인, 비밀번호 찾기에 필요해요.\n사용 중인 이메일을 입력해주세요"
-        label.textColor = .watchaGray500
+        label.textColor = .watchaGrayCustom
         label.font = .body1
         label.numberOfLines = 2
         return label
