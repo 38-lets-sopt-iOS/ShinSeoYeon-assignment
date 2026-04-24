@@ -155,9 +155,9 @@ final class LoginViewController: UIViewController {
         emailDidChange()
     }
     
-    //@objc private func nextButtonTapped() {
-     //   let passwordVC = PasswordInputViewController(email: emailTextField.text ?? "")
-     //   navigationController?.pushViewController(passwordVC, animated: true)
+    @objc private func nextButtonTapped() {
+        let passwordVC = PasswordInputViewController(email: emailTextField.text ?? "")
+        navigationController?.pushViewController(passwordVC, animated: true)
     }
     
 }
