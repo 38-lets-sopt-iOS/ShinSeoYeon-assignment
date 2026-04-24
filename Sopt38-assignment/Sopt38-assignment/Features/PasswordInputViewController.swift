@@ -69,8 +69,7 @@ final class PasswordInputViewController: UIViewController {
     
     private let checkImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "checkmark.circle.fill")
-        imageView.tintColor = .watchaGray100
+        imageView.image = UIImage(named: "enableOffIcon")
         return imageView
     }()
     
@@ -218,7 +217,10 @@ final class PasswordInputViewController: UIViewController {
         signUpButton.isEnabled = isValid
         signUpButton.backgroundColor = isValid ? .watchaPink : .watchaGray400
         
-        checkImageView.tintColor = isValid ? .watchaGreen : .watchaGray100
+        checkImageView.image = isValid
+            ? UIImage(named: "enableOnIcon")
+            : UIImage(named: "enableOffIcon")
+        
         conditionLabel.textColor = isValid ? .watchaGreen : .watchaGray100
     }
     
