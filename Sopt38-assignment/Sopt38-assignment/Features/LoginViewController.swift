@@ -53,7 +53,7 @@ final class LoginViewController: UIViewController {
     
     private let checkButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        button.setImage(UIImage(named: "enableOnIcon"), for: .normal)
         button.tintColor = .watchaGray300
         button.isHidden = true
         return button
