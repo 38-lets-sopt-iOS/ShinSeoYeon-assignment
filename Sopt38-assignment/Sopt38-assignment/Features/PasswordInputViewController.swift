@@ -62,7 +62,7 @@ final class PasswordInputViewController: UIViewController {
     
     private let eyeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "eye"), for: .normal)
+        button.setImage(UIImage(named: "eyeOffIcon"), for: .normal)
         button.tintColor = .watchaGray200
         return button
     }()
@@ -231,8 +231,8 @@ final class PasswordInputViewController: UIViewController {
         isPasswordVisible.toggle()
         passwordTextField.isSecureTextEntry = !isPasswordVisible
         
-        let imageName = isPasswordVisible ? "eye.slash" : "eye"
-        eyeButton.setImage(UIImage(systemName: imageName), for: .normal)
+        let imageName = isPasswordVisible ? "eyeOnIcon" : "eyeOffIcon"
+        eyeButton.setImage(UIImage(named: imageName), for: .normal)
     }
     
     @objc private func nicknameButtonTapped() {
