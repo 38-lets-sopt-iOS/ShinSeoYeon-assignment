@@ -212,7 +212,7 @@ final class SubscribeViewController: UIViewController {
                 newContentScrollView.addSubview(newContentStackView)
                 
                 ["garoItem1", "garoItem2", "garoItem3", "garoItem4"].forEach {
-                    newContentStackView.addArrangedSubview(makeGaroImageView(imageName: $0))
+                    newContentStackView.addArrangedSubview(makeBigGaroImageView(imageName: $0))
                 }
             
                 contentView.addSubview(watgorithmTitleImageView)
@@ -245,8 +245,21 @@ final class SubscribeViewController: UIViewController {
                 contentView.addSubview(watchaPartyScrollView)
                 watchaPartyScrollView.addSubview(watchaPartyStackView)
                 
-                ["garoItem1", "garoItem2", "garoItem3", "garoItem4"].forEach {
-                    watchaPartyStackView.addArrangedSubview(makeGaroImageView(imageName: $0))
+                let watchaPartyData: [(String, String, String)] = [
+                    ("garoItem1", "오늘 10:10에 시작", "# 크라임씬"),
+                    ("garoItem2", "오늘 11:10에 시작", "# 폭싹 속았수다"),
+                    ("garoItem3", "오늘 12:10에 시작", "# 왕과 사는 남자"),
+                    ("garoItem4", "오늘 14:10에 시작", "# 파묘")
+                ]
+
+                watchaPartyData.forEach {
+                    watchaPartyStackView.addArrangedSubview(
+                        makeWatchaPartyView(
+                            imageName: $0.0,
+                            timeText: $0.1,
+                            titleText: $0.2
+                        )
+                    )
                 }
             }
 
@@ -321,7 +334,7 @@ final class SubscribeViewController: UIViewController {
                 newContentScrollView.snp.makeConstraints {
                     $0.top.equalTo(newContentSubTitleLabel.snp.bottom).offset(20)
                     $0.leading.trailing.equalToSuperview()
-                    $0.height.equalTo(120)
+                    $0.height.equalTo(180)
                 }
                 
                 newContentStackView.snp.makeConstraints {
@@ -374,7 +387,7 @@ final class SubscribeViewController: UIViewController {
                 watchaPartyScrollView.snp.makeConstraints {
                     $0.top.equalTo(watchaPartyHeaderStack.snp.bottom).offset(20)
                     $0.leading.trailing.equalToSuperview()
-                    $0.height.equalTo(120)
+                    $0.height.equalTo(195)
                 }
                 
                 watchaPartyStackView.snp.makeConstraints {
@@ -414,8 +427,8 @@ final class SubscribeViewController: UIViewController {
             }
         }
         
-        // 가로 이미지뷰
-        private func makeGaroImageView(imageName: String) -> UIImageView {
+        // 작은 가로 이미지뷰
+        private func makeSmallGaroImageView(imageName: String) -> UIImageView {
             return UIImageView().then {
                 $0.image = UIImage(named: imageName)
                 $0.contentMode = .scaleAspectFill
@@ -423,9 +436,91 @@ final class SubscribeViewController: UIViewController {
                 $0.layer.cornerRadius = 8
                 
                 $0.snp.makeConstraints {
-                    $0.width.equalTo(195)
+                    $0.width.equalTo(196)
                     $0.height.equalTo(139)
                 }
             }
+        }
+    
+        // 큰 가로 이미지뷰
+        private func makeBigGaroImageView(imageName: String) -> UIImageView {
+            return UIImageView().then {
+                $0.image = UIImage(named: imageName)
+                $0.contentMode = .scaleAspectFill
+                $0.clipsToBounds = true
+                $0.layer.cornerRadius = 8
+                
+                $0.snp.makeConstraints {
+                    $0.width.equalTo(321)
+                    $0.height.equalTo(180)
+                }
+            }
+        }
+    
+        // 왓챠파티 이미지뷰
+        private func makeWatchaPartyView(
+            imageName: String,
+            timeText: String,
+            titleText: String
+        ) -> UIView {
+            
+            let containerView = UIView().then {
+                $0.backgroundColor = .watchaGray600
+            }
+            
+            let imageView = UIImageView().then {
+                $0.image = UIImage(named: imageName)
+                $0.contentMode = .scaleAspectFill
+                $0.clipsToBounds = true
+            }
+            
+            let notiIcon = UIImageView().then {
+                $0.image = UIImage(named: "watchaPartyNotiIcon")
+                $0.contentMode = .scaleAspectFit
+            }
+            
+            let timeLabel = UILabel().then {
+                $0.text = timeText
+                $0.textColor = .watchaPink
+                $0.font = .body1
+            }
+            
+            let titleLabel = UILabel().then {
+                $0.text = titleText
+                $0.textColor = .watchaWhite
+                $0.font = .subhead3
+            }
+            
+            containerView.addSubview(imageView)
+            imageView.addSubview(notiIcon)
+            containerView.addSubview(timeLabel)
+            containerView.addSubview(titleLabel)
+            
+            containerView.snp.makeConstraints {
+                $0.width.equalTo(196)
+                $0.height.equalTo(194)
+            }
+            
+            imageView.snp.makeConstraints {
+                $0.top.leading.trailing.equalToSuperview()
+                $0.height.equalTo(139)
+            }
+            
+            notiIcon.snp.makeConstraints {
+                $0.top.trailing.equalToSuperview().inset(12)
+                $0.size.equalTo(35)
+            }
+            
+            timeLabel.snp.makeConstraints {
+                $0.top.equalTo(imageView.snp.bottom).offset(8)
+                $0.leading.equalToSuperview().offset(12)
+            }
+            
+            titleLabel.snp.makeConstraints {
+                $0.top.equalTo(timeLabel.snp.bottom).offset(4)
+                $0.leading.equalTo(timeLabel)
+            }
+            
+            return containerView
         }
 }
