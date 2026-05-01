@@ -170,6 +170,10 @@ final class SubscribeViewController: UIViewController {
             $0.alignment = .center
         }
     
+        private let floatingImageView = UIImageView().then {
+            $0.image = UIImage(named: "floatingImage")
+            $0.contentMode = .scaleAspectFit
+        }
     
         // viewDidLoad
         override func viewDidLoad() {
@@ -261,6 +265,8 @@ final class SubscribeViewController: UIViewController {
                         )
                     )
                 }
+            
+                view.addSubview(floatingImageView)
             }
 
         // setLayout 함수 (스냅킷 제약 모아놓은 함수)
@@ -393,6 +399,13 @@ final class SubscribeViewController: UIViewController {
                 watchaPartyStackView.snp.makeConstraints {
                     $0.edges.equalToSuperview()
                     $0.height.equalToSuperview()
+                }
+            
+                floatingImageView.snp.makeConstraints {
+                    $0.leading.equalToSuperview().offset(12)
+                    $0.trailing.equalToSuperview().offset(-12)
+                    $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-14)
+                    $0.height.equalTo(86)
                 }
             }
         
