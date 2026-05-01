@@ -5,7 +5,10 @@ import Then
 
 final class SubscribeViewController: UIViewController {
     
-    private let scrollView = UIScrollView()
+    private let scrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = false
+    }
+    
     private let contentView = UIView()
     
     private let titleLabel = UILabel().then {
