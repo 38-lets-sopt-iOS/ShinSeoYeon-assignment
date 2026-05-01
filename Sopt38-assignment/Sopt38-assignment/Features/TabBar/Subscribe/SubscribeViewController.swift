@@ -489,7 +489,7 @@ final class SubscribeViewController: UIViewController {
             
             let notiIcon = UIImageView().then {
                 $0.image = UIImage(named: "watchaPartyNotiIcon")
-                $0.backgroundColor = .red
+                $0.backgroundColor = .white
                 $0.contentMode = .scaleAspectFit
             }
             
