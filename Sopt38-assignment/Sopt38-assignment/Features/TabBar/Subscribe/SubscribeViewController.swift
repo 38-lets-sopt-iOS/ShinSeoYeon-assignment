@@ -75,6 +75,27 @@ final class SubscribeViewController: UIViewController {
             $0.spacing = 12
             $0.alignment = .fill
         }
+    
+        private let watgorithmTitleImageView = UIImageView().then {
+            $0.image = UIImage(named: "watgorithmImage")
+            $0.contentMode = .scaleAspectFit
+        }
+
+        private let watgorithmSubTitleLabel = UILabel().then {
+            $0.text = "예능부터 드라마까지!"
+            $0.textColor = .watchaGrayCustom2
+            $0.font = .subhead1
+        }
+
+    private let watgorithmScrollView = UIScrollView().then {
+        $0.showsHorizontalScrollIndicator = false
+    }
+
+    private let watgorithmStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 12
+        $0.alignment = .fill
+    }
         
         private let comingSoonTitleLabel = UILabel().then {
             $0.text = "공개 예정 콘텐츠"
@@ -148,6 +169,15 @@ final class SubscribeViewController: UIViewController {
             
             ["garoItem1", "garoItem2", "garoItem3", "garoItem4"].forEach {
                 newContentStackView.addArrangedSubview(makeGaroImageView(imageName: $0))
+            }
+        
+            contentView.addSubview(watgorithmTitleImageView)
+            contentView.addSubview(watgorithmSubTitleLabel)
+            contentView.addSubview(watgorithmScrollView)
+            watgorithmScrollView.addSubview(watgorithmStackView)
+
+            ["saeroItem1", "saeroItem2", "saeroItem3", "saeroItem4"].forEach {
+                watgorithmStackView.addArrangedSubview(makeSmallSaeroImageView(imageName: $0))
             }
             
             contentView.addSubview(comingSoonTitleLabel)
@@ -234,11 +264,32 @@ final class SubscribeViewController: UIViewController {
                 $0.edges.equalToSuperview()
                 $0.height.equalToSuperview()
             }
-            
-            comingSoonTitleLabel.snp.makeConstraints {
+        
+            watgorithmTitleImageView.snp.makeConstraints {
                 $0.top.equalTo(newContentScrollView.snp.bottom).offset(45)
                 $0.leading.equalToSuperview().offset(22)
             }
+
+            watgorithmSubTitleLabel.snp.makeConstraints {
+                $0.top.equalTo(watgorithmTitleImageView.snp.bottom).offset(8.5)
+                $0.leading.equalTo(watgorithmTitleImageView)
+            }
+
+            watgorithmScrollView.snp.makeConstraints {
+                $0.top.equalTo(watgorithmSubTitleLabel.snp.bottom).offset(20)
+                $0.leading.trailing.equalToSuperview()
+                $0.height.equalTo(170)
+            }
+
+            watgorithmStackView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+                $0.height.equalToSuperview()
+            }
+            
+        comingSoonTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(watgorithmScrollView.snp.bottom).offset(45)
+            $0.leading.equalToSuperview().offset(22)
+        }
             
             comingSoonScrollView.snp.makeConstraints {
                 $0.top.equalTo(comingSoonTitleLabel.snp.bottom).offset(20)
