@@ -7,9 +7,9 @@ final class SubscribeViewController: UIViewController {
     
     // UI 프로퍼티
     
-    private let scrollView = UIScrollView().then {
-            $0.showsVerticalScrollIndicator = false
-        }
+        private let scrollView = UIScrollView().then {
+                $0.showsVerticalScrollIndicator = false
+            }
         
         private let contentView = UIView()
         
