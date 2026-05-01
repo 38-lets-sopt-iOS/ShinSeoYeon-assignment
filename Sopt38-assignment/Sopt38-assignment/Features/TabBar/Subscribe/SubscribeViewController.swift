@@ -128,6 +128,39 @@ final class SubscribeViewController: UIViewController {
             $0.spacing = 12
             $0.alignment = .fill
         }
+        
+        private let watgorithmMoreLabel = UILabel().then {
+            $0.text = "더보기"
+            $0.textColor = .watchaGrayCustom2
+            $0.font = .cap1
+        }
+
+        private let comingSoonMoreLabel = UILabel().then {
+            $0.text = "더보기"
+            $0.textColor = .watchaGrayCustom2
+            $0.font = .cap1
+        }
+
+        private let watchaPartyMoreLabel = UILabel().then {
+            $0.text = "더보기"
+            $0.textColor = .watchaGrayCustom2
+            $0.font = .cap1
+        }
+    
+        private let watgorithmHeaderStack = UIStackView().then {
+            $0.axis = .horizontal
+            $0.alignment = .center
+        }
+
+        private let comingSoonHeaderStack = UIStackView().then {
+            $0.axis = .horizontal
+            $0.alignment = .center
+        }
+
+        private let watchaPartyHeaderStack = UIStackView().then {
+            $0.axis = .horizontal
+            $0.alignment = .center
+        }
     
     
     // viewDidLoad
@@ -172,7 +205,10 @@ final class SubscribeViewController: UIViewController {
             }
         
             contentView.addSubview(watgorithmTitleImageView)
-            contentView.addSubview(watgorithmSubTitleLabel)
+            contentView.addSubview(watgorithmHeaderStack)
+            watgorithmHeaderStack.addArrangedSubview(watgorithmSubTitleLabel)
+            watgorithmHeaderStack.addArrangedSubview(UIView())
+            watgorithmHeaderStack.addArrangedSubview(watgorithmMoreLabel)
             contentView.addSubview(watgorithmScrollView)
             watgorithmScrollView.addSubview(watgorithmStackView)
 
@@ -180,7 +216,10 @@ final class SubscribeViewController: UIViewController {
                 watgorithmStackView.addArrangedSubview(makeSmallSaeroImageView(imageName: $0))
             }
             
-            contentView.addSubview(comingSoonTitleLabel)
+            contentView.addSubview(comingSoonHeaderStack)
+            comingSoonHeaderStack.addArrangedSubview(comingSoonTitleLabel)
+            comingSoonHeaderStack.addArrangedSubview(UIView())
+            comingSoonHeaderStack.addArrangedSubview(comingSoonMoreLabel)
             contentView.addSubview(comingSoonScrollView)
             comingSoonScrollView.addSubview(comingSoonStackView)
             
@@ -188,7 +227,10 @@ final class SubscribeViewController: UIViewController {
                 comingSoonStackView.addArrangedSubview(makeSmallSaeroImageView(imageName: $0))
             }
             
-            contentView.addSubview(watchaPartyTitleLabel)
+            contentView.addSubview(watchaPartyHeaderStack)
+            watchaPartyHeaderStack.addArrangedSubview(watchaPartyTitleLabel)
+            watchaPartyHeaderStack.addArrangedSubview(UIView())
+            watchaPartyHeaderStack.addArrangedSubview(watchaPartyMoreLabel)
             contentView.addSubview(watchaPartyScrollView)
             watchaPartyScrollView.addSubview(watchaPartyStackView)
             
@@ -196,7 +238,7 @@ final class SubscribeViewController: UIViewController {
                 watchaPartyStackView.addArrangedSubview(makeGaroImageView(imageName: $0))
             }
         }
-    
+
     // setLayout 함수 (스냅킷 제약 모아놓은 함수)
     private func setLayout() {
             scrollView.snp.makeConstraints {
@@ -270,13 +312,13 @@ final class SubscribeViewController: UIViewController {
                 $0.leading.equalToSuperview().offset(22)
             }
 
-            watgorithmSubTitleLabel.snp.makeConstraints {
+            watgorithmHeaderStack.snp.makeConstraints {
                 $0.top.equalTo(watgorithmTitleImageView.snp.bottom).offset(8.5)
-                $0.leading.equalTo(watgorithmTitleImageView)
+                $0.leading.trailing.equalToSuperview().inset(22)
             }
 
             watgorithmScrollView.snp.makeConstraints {
-                $0.top.equalTo(watgorithmSubTitleLabel.snp.bottom).offset(20)
+                $0.top.equalTo(watgorithmHeaderStack.snp.bottom).offset(20)
                 $0.leading.trailing.equalToSuperview()
                 $0.height.equalTo(170)
             }
@@ -286,13 +328,13 @@ final class SubscribeViewController: UIViewController {
                 $0.height.equalToSuperview()
             }
             
-            comingSoonTitleLabel.snp.makeConstraints {
+            comingSoonHeaderStack.snp.makeConstraints {
                 $0.top.equalTo(watgorithmScrollView.snp.bottom).offset(45)
-                $0.leading.equalToSuperview().offset(22)
+                $0.leading.trailing.equalToSuperview().inset(22)
             }
             
             comingSoonScrollView.snp.makeConstraints {
-                $0.top.equalTo(comingSoonTitleLabel.snp.bottom).offset(20)
+                $0.top.equalTo(comingSoonHeaderStack.snp.bottom).offset(20)
                 $0.leading.trailing.equalToSuperview()
                 $0.height.equalTo(170)
             }
@@ -302,13 +344,13 @@ final class SubscribeViewController: UIViewController {
                 $0.height.equalToSuperview()
             }
             
-            watchaPartyTitleLabel.snp.makeConstraints {
+            watchaPartyHeaderStack.snp.makeConstraints {
                 $0.top.equalTo(comingSoonScrollView.snp.bottom).offset(45)
-                $0.leading.equalToSuperview().offset(22)
+                $0.leading.trailing.equalToSuperview().inset(22)
             }
             
             watchaPartyScrollView.snp.makeConstraints {
-                $0.top.equalTo(watchaPartyTitleLabel.snp.bottom).offset(20)
+                $0.top.equalTo(watchaPartyHeaderStack.snp.bottom).offset(20)
                 $0.leading.trailing.equalToSuperview()
                 $0.height.equalTo(120)
             }
