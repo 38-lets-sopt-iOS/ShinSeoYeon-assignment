@@ -122,8 +122,8 @@ class MainTabBarController: UITabBarController {
         
         libraryVC.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(named: "archiveTabIcon")?.withRenderingMode(.alwaysOriginal),
-            selectedImage: UIImage(named: "archiveTabIcon")?.withRenderingMode(.alwaysOriginal)
+            image: UIImage(named: "libraryTabIcon")?.withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: "libraryTabIcon")?.withRenderingMode(.alwaysOriginal)
         )
         
         
