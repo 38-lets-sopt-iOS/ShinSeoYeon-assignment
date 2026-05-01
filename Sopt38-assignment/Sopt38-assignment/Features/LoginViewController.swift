@@ -46,8 +46,7 @@ final class LoginViewController: UIViewController {
     
     private let clearButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        button.tintColor = .watchaGray300
+        button.setImage(UIImage(named: "xButtonIcon"), for: .normal)
         button.isHidden = true
         return button
     }()
