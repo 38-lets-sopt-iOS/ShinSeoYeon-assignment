@@ -37,6 +37,14 @@ final class SubscribeViewController: UIViewController {
             $0.image = UIImage(named: "profileIcon")
             $0.contentMode = .scaleAspectFit
         }
+    
+        private let headerView = UIView().then {
+            $0.backgroundColor = .clear
+        }
+
+        private let headerBottomLineView = UIView().then {
+            $0.backgroundColor = .watchaGrayCustom3
+        }
         
         private let titleLabel = UILabel().then {
             $0.text = "구독"
@@ -179,14 +187,17 @@ final class SubscribeViewController: UIViewController {
                 view.addSubview(scrollView)
                 scrollView.addSubview(contentView)
                 
-                contentView.addSubview(topBarView)
+                contentView.addSubview(headerView)
+
+                headerView.addSubview(topBarView)
+                headerView.addSubview(titleLabel)
+                headerView.addSubview(headerBottomLineView)
+
                 topBarView.addSubview(iconStackView)
-                
+
                 iconStackView.addArrangedSubview(videoIcon)
                 iconStackView.addArrangedSubview(notificationIcon)
                 iconStackView.addArrangedSubview(profileIcon)
-                
-                contentView.addSubview(titleLabel)
                 
                 contentView.addSubview(subscribeScrollView)
                 subscribeScrollView.addSubview(subscribeStackView)
@@ -251,9 +262,14 @@ final class SubscribeViewController: UIViewController {
                     $0.bottom.equalTo(watchaPartyScrollView.snp.bottom).offset(80)
                 }
                 
-                topBarView.snp.makeConstraints {
+                headerView.snp.makeConstraints {
                     $0.top.equalToSuperview().offset(55)
                     $0.leading.trailing.equalToSuperview()
+                    $0.height.equalTo(92)
+                }
+
+                topBarView.snp.makeConstraints {
+                    $0.top.leading.trailing.equalToSuperview()
                     $0.height.equalTo(56)
                 }
                 
@@ -273,6 +289,12 @@ final class SubscribeViewController: UIViewController {
                     $0.leading.equalToSuperview().offset(22)
                     $0.width.equalTo(52)
                     $0.height.equalTo(36)
+                }
+                
+                headerBottomLineView.snp.makeConstraints {
+                    $0.leading.trailing.bottom.equalToSuperview()
+                    $0.top.equalTo(titleLabel.snp.bottom).offset(8)
+                    $0.height.equalTo(1)
                 }
                 
                 subscribeScrollView.snp.makeConstraints {
