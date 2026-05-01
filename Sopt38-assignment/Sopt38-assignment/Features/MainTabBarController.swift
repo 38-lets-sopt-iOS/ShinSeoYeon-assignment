@@ -25,7 +25,7 @@ class MainTabBarController: UITabBarController {
     private func setViewControllers() {
         
         // 구독
-        let subscribeVC = UIViewController()
+        let subscribeVC = SubscribeViewController()
         subscribeVC.view.backgroundColor = .watchaBlack
         
         let subscribeLabel = UILabel().then {
