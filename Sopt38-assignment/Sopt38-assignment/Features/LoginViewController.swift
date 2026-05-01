@@ -129,7 +129,7 @@ final class LoginViewController: UIViewController {
         
         nextButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(22)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(32)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(13)
             $0.height.equalTo(56)
         }
     }
