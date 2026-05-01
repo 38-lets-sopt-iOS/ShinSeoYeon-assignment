@@ -39,7 +39,7 @@ final class SubscribeViewController: UIViewController {
         }
     
         private let headerView = UIView().then {
-            $0.backgroundColor = .clear
+            $0.backgroundColor = .watchaBlack
         }
 
         private let headerBottomLineView = UIView().then {
@@ -187,7 +187,7 @@ final class SubscribeViewController: UIViewController {
                 view.addSubview(scrollView)
                 scrollView.addSubview(contentView)
                 
-                contentView.addSubview(headerView)
+                view.addSubview(headerView)
 
                 headerView.addSubview(topBarView)
                 headerView.addSubview(titleLabel)
@@ -263,9 +263,9 @@ final class SubscribeViewController: UIViewController {
                 }
                 
                 headerView.snp.makeConstraints {
-                    $0.top.equalToSuperview().offset(55)
+                    $0.top.equalTo(view.safeAreaLayoutGuide)
                     $0.leading.trailing.equalToSuperview()
-                    $0.height.equalTo(92)
+                    $0.height.equalTo(100)
                 }
 
                 topBarView.snp.makeConstraints {
@@ -298,7 +298,7 @@ final class SubscribeViewController: UIViewController {
                 }
                 
                 subscribeScrollView.snp.makeConstraints {
-                    $0.top.equalTo(titleLabel.snp.bottom).offset(40)
+                    $0.top.equalToSuperview().offset(141) // 여기 101+40해서 141
                     $0.leading.trailing.equalToSuperview()
                     $0.height.equalTo(443)
                 }
