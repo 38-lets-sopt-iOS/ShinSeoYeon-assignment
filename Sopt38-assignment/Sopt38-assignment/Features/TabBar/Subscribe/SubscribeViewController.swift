@@ -476,6 +476,7 @@ final class SubscribeViewController: UIViewController {
             
             let notiIcon = UIImageView().then {
                 $0.image = UIImage(named: "watchaPartyNotiIcon")
+                $0.backgroundColor = .red
                 $0.contentMode = .scaleAspectFit
             }
             
@@ -492,7 +493,7 @@ final class SubscribeViewController: UIViewController {
             }
             
             containerView.addSubview(imageView)
-            imageView.addSubview(notiIcon)
+            containerView.addSubview(notiIcon)
             containerView.addSubview(timeLabel)
             containerView.addSubview(titleLabel)
             
@@ -507,7 +508,8 @@ final class SubscribeViewController: UIViewController {
             }
             
             notiIcon.snp.makeConstraints {
-                $0.top.trailing.equalToSuperview().inset(12)
+                $0.top.equalTo(imageView.snp.top).offset(12)
+                $0.trailing.equalTo(imageView.snp.trailing).offset(-12)
                 $0.size.equalTo(35)
             }
             
