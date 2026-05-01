@@ -87,15 +87,15 @@ final class SubscribeViewController: UIViewController {
             $0.font = .subhead1
         }
 
-    private let watgorithmScrollView = UIScrollView().then {
-        $0.showsHorizontalScrollIndicator = false
-    }
+        private let watgorithmScrollView = UIScrollView().then {
+            $0.showsHorizontalScrollIndicator = false
+        }
 
-    private let watgorithmStackView = UIStackView().then {
-        $0.axis = .horizontal
-        $0.spacing = 12
-        $0.alignment = .fill
-    }
+        private let watgorithmStackView = UIStackView().then {
+            $0.axis = .horizontal
+            $0.spacing = 12
+            $0.alignment = .fill
+        }
         
         private let comingSoonTitleLabel = UILabel().then {
             $0.text = "공개 예정 콘텐츠"
@@ -286,10 +286,10 @@ final class SubscribeViewController: UIViewController {
                 $0.height.equalToSuperview()
             }
             
-        comingSoonTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(watgorithmScrollView.snp.bottom).offset(45)
-            $0.leading.equalToSuperview().offset(22)
-        }
+            comingSoonTitleLabel.snp.makeConstraints {
+                $0.top.equalTo(watgorithmScrollView.snp.bottom).offset(45)
+                $0.leading.equalToSuperview().offset(22)
+            }
             
             comingSoonScrollView.snp.makeConstraints {
                 $0.top.equalTo(comingSoonTitleLabel.snp.bottom).offset(20)
