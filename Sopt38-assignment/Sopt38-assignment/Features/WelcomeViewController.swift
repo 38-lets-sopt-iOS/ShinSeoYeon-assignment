@@ -4,6 +4,8 @@ import SnapKit
 
 final class WelcomeViewController: UIViewController {
     
+    // ------
+    
     private let nickname: String?
     
     init(nickname: String?) {
@@ -41,11 +43,14 @@ final class WelcomeViewController: UIViewController {
         return button
     }()
     
+    // ------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
         setLayout()
+        setAction()
     }
     
     private func setUI() {
@@ -81,6 +86,22 @@ final class WelcomeViewController: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(32)
             $0.height.equalTo(56)
         }
+    }
+    
+    // < 메인으로 버튼 >
+    private func setAction() {
+        mainButton.addTarget(
+            self,
+            action: #selector(mainButtonTapped),
+            for: .touchUpInside
+        )
+    }
+
+    @objc private func mainButtonTapped() {
+        let tabBarVC = MainTabBarController()
+        tabBarVC.modalPresentationStyle = .fullScreen
+        
+        present(tabBarVC, animated: true)
     }
 }
 
