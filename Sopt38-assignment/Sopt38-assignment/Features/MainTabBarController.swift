@@ -28,18 +28,6 @@ class MainTabBarController: UITabBarController {
         let subscribeVC = SubscribeViewController()
         subscribeVC.view.backgroundColor = .watchaBlack
         
-        let subscribeLabel = UILabel().then {
-            $0.text = "구독"
-            $0.textColor = .watchaWhite
-            $0.font = .head2
-            $0.textAlignment = .center
-        }
-        
-        subscribeVC.view.addSubview(subscribeLabel)
-        subscribeLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
-        
         subscribeVC.tabBarItem = UITabBarItem(
             title: nil,  // 이미 에셋에 타이틀이 포함되어있음..
             image: UIImage(named: "subscribeTabIcon")?.withRenderingMode(.alwaysOriginal),
