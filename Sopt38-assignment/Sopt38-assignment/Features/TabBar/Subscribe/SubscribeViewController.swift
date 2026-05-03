@@ -554,7 +554,6 @@ final class SubscribeViewController: UIViewController {
     }
 }
 
-// 이거 분리해야됨
 extension SubscribeViewController: UICollectionViewDataSource {
     
     func collectionView(
@@ -631,7 +630,6 @@ extension SubscribeViewController: UICollectionViewDataSource {
     }
 }
 
-// 이거 분리해야됨
 extension SubscribeViewController: UICollectionViewDelegate {
     
 }
