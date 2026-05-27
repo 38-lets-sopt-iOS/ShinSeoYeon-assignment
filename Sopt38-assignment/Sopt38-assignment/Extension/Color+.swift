@@ -18,6 +18,8 @@ extension UIColor {
     static let watchaGray500 = UIColor(hex: "#505155")
     static let watchaGray600 = UIColor(hex: "#191A1C")
     static let watchaGrayCustom = UIColor(hex: "#BFBFBF")
+    static let watchaGrayCustom2 = UIColor(hex: "#BABAC1")
+    static let watchaGrayCustom3 = UIColor(hex: "#1B1C1D")
     
     static let watchaWhite = UIColor(hex: "#FFFFFF")
     static let watchaBlack = UIColor(hex: "#000000")
