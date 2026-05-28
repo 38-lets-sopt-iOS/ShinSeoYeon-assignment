@@ -1,0 +1,24 @@
+//
+//  ContentView.swift
+//  Sopt38-SwiftUI
+//
+//  Created by 신서연 on 5/29/26.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Hello, world!")
+        }
+        .padding()
+    }
+}
+
+#Preview {
+    ContentView()
+}
